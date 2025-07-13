@@ -1,0 +1,26 @@
+server:
+  verbosity: 1
+  interface: 0.0.0.0
+  port: 53
+  do-ip4: yes
+  do-ip6: no
+  do-udp: yes
+  do-tcp: yes
+  access-control: 127.0.0.0/8 allow
+  root-hints: "/var/lib/unbound/root.hints"
+  hide-identity: yes
+  hide-version: yes
+  harden-glue: yes
+  harden-dnssec-stripped: yes
+  use-caps-for-id: yes
+  edns-buffer-size: 1232
+  prefetch: yes
+  cache-min-ttl: 3600
+  cache-max-ttl: 86400
+  num-threads: 2
+  so-rcvbuf: 4m
+  so-sndbuf: 4m
+  rrset-roundrobin: yes
+  minimal-responses: yes
+  qname-minimisation: yes
+  username: unbound
