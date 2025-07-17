@@ -1,12 +1,15 @@
 server:
+  logfile: "/var/log/unbound/unbound.log"
   verbosity: 1
+  log-time-ascii: yes
+  log-queries: yes
   interface: 0.0.0.0
   port: 53
   do-ip4: yes
   do-ip6: no
   do-udp: yes
   do-tcp: yes
-  access-control: 127.0.0.0/8 allow
+  access-control: 0.0.0.0/0 allow
   root-hints: "/var/lib/unbound/root.hints"
   hide-identity: yes
   hide-version: yes
