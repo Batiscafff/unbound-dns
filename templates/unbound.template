@@ -27,3 +27,13 @@ server:
   minimal-responses: yes
   qname-minimisation: yes
   username: unbound
+  tls-cert-bundle: "/etc/ssl/certs/ca-certificates.crt"
+  auto-trust-anchor-file: "/var/lib/unbound/root.key"
+  harden-dnssec-stripped: yes
+  val-permissive-mode: no
+  trust-anchor-signaling: yes
+
+forward-zone:
+  name: "."
+  forward-ssl-upstream: yes
+  forward-addr: 9.9.9.11@853
