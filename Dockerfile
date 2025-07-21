@@ -2,8 +2,10 @@ FROM alpine:3.22.0
 COPY entrypoint.sh entrypoint.sh
 COPY templates/unbound.template /tmp/unbound.template
 COPY loki /etc/loki
+#__________________________Global_Settings__________________________
 RUN apk update && \
     apk upgrade && \
+    apk add --no-cache tzdata=2025b-r0 && \
 #__________________________Unbound_Block__________________________
     apk add --no-cache unbound=1.23.0-r2 && \
     apk add --no-cache ca-certificates=20250619-r0 && \

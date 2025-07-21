@@ -1,2 +1,3 @@
 Makefile
 Dockerfile.old*
+.env

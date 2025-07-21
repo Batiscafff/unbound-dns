@@ -1,0 +1,9 @@
+---
+services:
+  unbound-dns:
+    build: .
+    env_file: ".env"
+    ports:
+      - "3100:3100"
+      - "5335:53/tcp"
+      - "5335:53/udp"

@@ -1,4 +1,9 @@
 #!/bin/bash
+if [ -z "${DATA_REGION}" ]; then
+  ln -s /usr/share/zoneinfo/Europe/Brussels /etc/localtime
+else
+  ln -s /usr/share/zoneinfo/Europe/${DATA_REGION} /etc/localtime
+fi
 #__________________________Promtail_Block__________________________
 echo "0.0.0.0 stats.grafana.org" >> /etc/hosts
 promtail -config.file=/etc/loki/promtail-local-config.yaml &
