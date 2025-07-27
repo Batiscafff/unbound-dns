@@ -1,3 +1,5 @@
 Makefile
 Dockerfile.old*
 .env
+test_venv
+__pycache__
