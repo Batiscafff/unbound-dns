@@ -20,4 +20,6 @@ def test_promtail_status():
 
 def test_promtail_job():
     response = get_promtail("/targets")
+    assert response.status_code == 200, f"Unexpected status: {response.status_code}"
+    assert "text/html" in response.headers.get("Content-Type", ""), "Expected HTML response"
     assert re.findall(r"unbound-dns\s+\(\d+/\d+\s+ready\)", response.text, flags=re.MULTILINE)
