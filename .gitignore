@@ -3,3 +3,4 @@ Dockerfile.old*
 .env
 test_venv
 __pycache__
+ktest.py
