@@ -32,7 +32,19 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Run container
-        run: docker run -d -p 3100:3100 --name container-unbound-dns ${{ secrets.DOCKERHUB_USERNAME }}/image-unbound-dns:latest
+        run: docker run -d -p 9080:9080 -p 53:53 -p 3100:3100 --name container-unbound-dns ${{ secrets.DOCKERHUB_USERNAME }}/image-unbound-dns:latest
+
+      - name: Install python requirements
+        run: pip install -r tests/test_requirements.txt
+
+      - name: Run Promtail tests
+        run: pytest tests/test_promtail.py
+
+      - name: Run Loki tests
+        run: pytest tests/test_loki.py
+
+      - name: Run DNS tests
+        run: pytest tests/test_dns.py
 
       - name: Remove container
         run: docker rm -f container-unbound-dns
