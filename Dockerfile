@@ -15,7 +15,6 @@ RUN apk update && \
     chown unbound:unbound /var/log/unbound && \
     chown -R unbound:unbound /var/lib/unbound && \
     echo "0       0       1       *       *       curl -o /var/lib/unbound/root.hints https://www.internic.net/domain/named.cache  && pkill unbound && unbound >> /var/log/unbound/restart.log 2>&1" >> /etc/crontabs/root && \
-    update-ca-certificates && \
 #__________________________Promtail_Block__________________________
     apk add --no-cache loki-promtail && \
 #__________________________Loki_Block__________________________

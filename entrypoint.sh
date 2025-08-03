@@ -12,6 +12,7 @@ loki -config.file=/etc/loki/loki-local-config.yaml &
 #__________________________Unbound_Block__________________________
 envsubst < /tmp/unbound.template > /etc/unbound/unbound.conf
 rm /tmp/unbound.template
+update-ca-certificates
 unbound-anchor -a /var/lib/unbound/root.key
 unbound
 #__________________________Plug__________________________
