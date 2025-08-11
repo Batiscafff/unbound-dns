@@ -1,8 +1,11 @@
 server:
+  #___Logging_block___
   logfile: "/var/log/unbound/unbound.log"
   verbosity: 1
   log-time-ascii: yes
   log-queries: yes
+
+  #___Network_block___
   interface: 0.0.0.0
   port: 53
   do-ip4: yes
@@ -10,12 +13,18 @@ server:
   do-udp: yes
   do-tcp: yes
   access-control: 0.0.0.0/0 allow
+
+  #___DNS_data_sources_block___
   root-hints: "/var/lib/unbound/root.hints"
+
+  #___Privacy_&_security_block___
   hide-identity: yes
   hide-version: yes
   harden-glue: yes
   harden-dnssec-stripped: yes
   use-caps-for-id: yes
+
+  #___EDNS_&_performance_block___
   edns-buffer-size: 1232
   prefetch: yes
   cache-min-ttl: 3600
@@ -26,13 +35,20 @@ server:
   rrset-roundrobin: yes
   minimal-responses: yes
   qname-minimisation: yes
+
+  #___User_&_permissions_block___
   username: unbound
+
+  #___TLS_&_certificates_block___
   tls-cert-bundle: "/etc/ssl/certs/ca-certificates.crt"
+
+  #___DNSSEC_block___
   auto-trust-anchor-file: "/var/lib/unbound/root.key"
   harden-dnssec-stripped: yes
   val-permissive-mode: no
   trust-anchor-signaling: yes
 
+#___Forwarding_block___
 forward-zone:
   name: "."
   forward-ssl-upstream: yes
