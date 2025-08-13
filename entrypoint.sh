@@ -1,4 +1,7 @@
 #!/bin/bash
+if $DNS_FROWARDING_MODE; then
+  cat /tmp/unbound.conf.forward.template >> /tmp/unbound.conf.template
+fi
 if [ -z "${DATA_REGION}" ]; then
   ln -s /usr/share/zoneinfo/Europe/Brussels /etc/localtime
 else
@@ -10,8 +13,8 @@ promtail -config.file=/etc/loki/promtail-local-config.yaml &
 #__________________________Loki_Block__________________________
 loki -config.file=/etc/loki/loki-local-config.yaml &
 #__________________________Unbound_Block__________________________
-envsubst < /tmp/unbound.template > /etc/unbound/unbound.conf
-rm /tmp/unbound.template
+envsubst < /tmp/unbound.conf.template > /etc/unbound/unbound.conf
+rm /tmp/unbound.conf.template
 update-ca-certificates
 unbound-anchor -a /var/lib/unbound/root.key
 unbound

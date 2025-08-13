@@ -1,0 +1,5 @@
+#___Forwarding_block___
+forward-zone:
+  name: "."
+  forward-ssl-upstream: yes
+  forward-addr: 9.9.9.11@853

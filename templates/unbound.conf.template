@@ -1,9 +1,9 @@
 server:
   #___Logging_block___
   logfile: "/var/log/unbound/unbound.log"
-  verbosity: 1
-  log-time-ascii: yes
-  log-queries: yes
+  verbosity: ${verbosity}
+  log-time-ascii: ${log_time_ascii}
+  log-queries: ${log_queries}
 
   #___Network_block___
   interface: 0.0.0.0
@@ -25,16 +25,16 @@ server:
   use-caps-for-id: yes
 
   #___EDNS_&_performance_block___
-  edns-buffer-size: 1232
-  prefetch: yes
-  cache-min-ttl: 3600
-  cache-max-ttl: 86400
-  num-threads: 2
-  so-rcvbuf: 4m
-  so-sndbuf: 4m
-  rrset-roundrobin: yes
-  minimal-responses: yes
-  qname-minimisation: yes
+  edns-buffer-size: ${edns_buffer_size}
+  prefetch: ${prefetch}
+  cache-min-ttl: ${cache_min_ttl}
+  cache-max-ttl: ${cache_max_ttl}
+  num-threads: ${num_threads}
+  so-rcvbuf: ${so_rcvbuf}
+  so-sndbuf: ${so_sndbuf}
+  rrset-roundrobin: ${rrset_roundrobin}
+  minimal-responses: ${minimal_responses}
+  qname-minimisation: ${qname_minimisation}
 
   #___User_&_permissions_block___
   username: unbound
@@ -47,9 +47,3 @@ server:
   harden-dnssec-stripped: yes
   val-permissive-mode: no
   trust-anchor-signaling: yes
-
-#___Forwarding_block___
-forward-zone:
-  name: "."
-  forward-ssl-upstream: yes
-  forward-addr: 9.9.9.11@853
