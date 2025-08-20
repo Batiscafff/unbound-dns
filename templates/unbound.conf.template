@@ -38,12 +38,3 @@ server:
 
   #___User_&_permissions_block___
   username: unbound
-
-  #___TLS_&_certificates_block___
-  tls-cert-bundle: "/etc/ssl/certs/ca-certificates.crt"
-
-  #___DNSSEC_block___
-  auto-trust-anchor-file: "/var/lib/unbound/root.key"
-  harden-dnssec-stripped: yes
-  val-permissive-mode: no
-  trust-anchor-signaling: yes

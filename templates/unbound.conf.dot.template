@@ -1,0 +1,3 @@
+
+  #___TLS_&_certificates_block___
+  tls-cert-bundle: "/etc/ssl/certs/ca-certificates.crt"

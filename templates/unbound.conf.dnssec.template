@@ -1,0 +1,6 @@
+
+  #___DNSSEC_block___
+  auto-trust-anchor-file: "/var/lib/unbound/root.key"
+  harden-dnssec-stripped: yes
+  val-permissive-mode: no
+  trust-anchor-signaling: yes

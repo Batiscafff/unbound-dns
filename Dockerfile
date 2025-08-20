@@ -19,7 +19,12 @@ ENV verbosity="1" \
     qname_minimisation="yes" \
 #___Unbound_forwarding_ENV_block___
     DNS_FROWARDING_MODE=true \
-    forward_addr="9.9.9.11"
+    forward_addr="9.9.9.11" \
+    forward_port="53" \
+#___Unbound_dnssec_ENV_block___
+    DNS_DNSSEC_MODE=true \
+#___Unbound_dot_ENV_block___
+    DNS_DOT_MODE=true
 #___Global_settings_RUN_block___
 RUN apk update && \
     apk upgrade && \
